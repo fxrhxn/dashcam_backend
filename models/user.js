@@ -17,16 +17,6 @@ var current_statuses = ['marketer', 'influencer', 'admin', 'new']
 var GeneralUser_Schema = new mongoose.Schema({
   username : String,
   password : String,
-  account_type : ['new'],
-  accounts_allowed : account_types,
-  current_status : String,
-  email : String,
-  email_verified : Boolean,
-  payment_info : String,
-  marketing_account : String,
-  influencer_account : String,
-  companies : [],
-  offers : [],
 });
 
 
@@ -64,36 +54,6 @@ GeneralUser_Schema.pre('save', function(next) {
     return next();
   }
 
-  // if(this.isModified('password')){
-  //   bcrypt.genSalt(10, function(err, salt) {
-  //     if (err) {
-  //       return next(err);
-  //     }
-  //     bcrypt.hash(user.password, salt, function(err, hash) {
-  //       if (err) {
-  //         return next(err);
-  //       }
-  //       user.password = hash;
-  //       next();
-  //     });
-  //   });
-  // }else{
-  //   return next();
-  // }
-
-
-  // if(this.isModified('email')){
-  //   // Check email.
-  //     if(EmailValidator.validate(user.email) == false){
-  //
-  //       var ErrorMessage = new Error({ error : true, message : 'Use a valid email.'})
-  //
-  //       return next(ErrorMessage)
-  //
-  //     }else{
-  //       next();
-  //     }
-  // }
 
 
 

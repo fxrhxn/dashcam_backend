@@ -1,10 +1,22 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
+var jwt = require('jsonwebtoken');
+var moment = require('moment');
+var mongoose = require('mongoose');
+var config = require('./config');
+var logger = require('morgan');
+
+//Connect the mongoose database.
+mongoose.connect(config.database.mLab);
+
+//Configuration for application.
+app.use(logger('dev'));
 
 //Use the body-parser yeeeet.
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 
 
 var api_routes = require('./api');
